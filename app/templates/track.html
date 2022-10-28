@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content-container">
+        <h1>Minimal URL shortener</h1>
+        <p>Shortened URL: <a id="shortened_url"></a></p>
+        <p>Long URL: <a id="long_url"></a></p>
+        <p>Clicks: <a id="clicks"></a></p>
+        <button onclick="window.location.href='/'">Home</button>
+    </div>
+    <script>
+        let shortened_url = '{{ shortened_url }}';
+        let long_url = '{{ long_url }}';
+        let clicks = '{{ clicks }}';
+
+        let full_url = window.location.origin + "/" + shortened_url;
+        document.getElementById('shortened_url').href = full_url;
+        document.getElementById('shortened_url').innerHTML = full_url;
+
+        document.getElementById('long_url').href = long_url;
+        document.getElementById('long_url').innerHTML = long_url;
+
+        document.getElementById('clicks').innerHTML = clicks;
+    </script>
+{% endblock %}

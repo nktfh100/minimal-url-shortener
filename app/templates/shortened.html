@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content-container">
+        <h1>Minimal URL shortener</h1>
+        <p>Shortened URL: <a id="shortened_url" target="_blank"></a></p>
+        <div>
+            <button onclick="window.location.href='/'">Home</button>
+            <button id="track">Track</button>
+        </div>
+    </div>
+    <script>
+        let shortened_url = '{{ shortened_url }}';
+        let full_url = window.location.origin + "/" + shortened_url;
+        document.getElementById('shortened_url').href = full_url;
+        document.getElementById('shortened_url').innerHTML = full_url;
+
+        document.getElementById('track').onclick = function() {
+            window.location.href = '/track/' + shortened_url;
+        }
+    </script>
+{% endblock %}
